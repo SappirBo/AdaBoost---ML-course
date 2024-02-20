@@ -7,6 +7,8 @@ Authors: Sappir Bohbot & Almog David
 '''
 
 import AdaBoost
+from datetime import datetime
+
 
 ada_boost = AdaBoost.AdaBoost()
 
@@ -29,6 +31,20 @@ true_error_ave_per_iteration = {}
 for iter  in range(0,iterations_each_run):
     empirical_errors_ave_per_iteration[iter] = 0
     true_error_ave_per_iteration[iter] = 0
+
+# storing the current time in the variable
+c = datetime.now()
+current_time = c.strftime('%H:%M:%S')
+
+# Print Algorithm start
+start_msg =  f'{current_time} Starting AdaBoost: {runs_of_adaboost} runs, {iterations_each_run} iterations each run,'
+if line_or_circle == 1:
+     start_msg += 'hypothesis are set to lines.'
+else:
+     start_msg += 'hypothesis are set to circles.'
+print(start_msg)
+print("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ")
+
 
 '''
 Main loop!
