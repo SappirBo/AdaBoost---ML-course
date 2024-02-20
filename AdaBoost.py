@@ -16,14 +16,14 @@ class AdaBoost:
     '''
     Run the adaboost according to Hypothses -> lines or circles (1 for lines, 2 for circles).
     '''
-    def run(self, line_or_circle:int, print_details = False, to_visualize = False): 
+    def run(self, line_or_circle:int,iterations_number:int, print_details = False, to_visualize = False): 
         if line_or_circle != 1 and line_or_circle != 2:
             print("Eror")
             exit
         else:
             pass
 
-        iterations = 8 # the so called "k" in the class algorithm
+        iterations = iterations_number # the so called "k" in the class algorithm
 
         # Tools is helper to save the functions in order
         tools = AdaBoostTools.AdaBoostTools()
