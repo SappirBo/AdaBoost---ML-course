@@ -17,13 +17,21 @@ The AdaBoost algorithm in our implementation can use two types of rules:
 
 ![image](https://github.com/SappirBo/AdaBoost_ML_course/assets/92790326/33b1a122-6c5b-40be-9f88-3bb8a1ea4d65)
 
+## Output
+The output of the program is 3 parts: 
+1 .sum of the operation that activated (number of runs, iterations and hypotheses).
+2. Average errors upon all the runs.
+3. summary.
+
+![image](https://github.com/SappirBo/AdaBoost_ML_course/assets/92790326/95ac44de-9e85-4a11-aee3-2ceb24424ee1)
+
 
 ## How to run  
 first make sure the [installation](https://github.com/SappirBo/AdaBoost_ML_course/blob/main/README.md#installation) works properly.<br/>
 <br/>
 In ```main.py``` file, you have will have all at once configurations:
 
- ![image](https://github.com/SappirBo/AdaBoost_ML_course/assets/92790326/60ec78e0-8296-4e82-a515-74b354bd89fa)
+![image](https://github.com/SappirBo/AdaBoost_ML_course/assets/92790326/3e893eb3-64cb-4a86-9c5c-6aed4798b533)
 
 you can update the configuration each time for different test cases. 
  
