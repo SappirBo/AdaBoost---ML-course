@@ -16,7 +16,8 @@ class AdaBoost:
     '''
     Run the adaboost according to Hypothses -> lines or circles (1 for lines, 2 for circles).
     '''
-    def run(self, line_or_circle:int,iterations_number:int, print_details = False, to_visualize = False): 
+    def run(self, line_or_circle:int,iterations_number:int, print_details = False, to_visualize = False, 
+            show_best_hypotheses = False): 
         if line_or_circle != 1 and line_or_circle != 2:
             print("Eror")
             exit
@@ -42,11 +43,14 @@ class AdaBoost:
 
         best_hypotheses = []
         alphas = []
-
+        empirical_errors_set = []
+        true_error_set = []
+        
         for i in range(iterations):
             best_hypothesis = None
             best_error = float('inf')
             best_predictions = None
+            
             
             for hypothesis in H:
                 error, predictions = tools.evaluate_hypothesis(hypothesis, points_weight, S, line_or_circle)
@@ -71,22 +75,31 @@ class AdaBoost:
             test_predictions_s = tools.predict_test_data(S, best_hypotheses, alphas, line_or_circle)
             # Calculate the accuracy of the predictions S
             accuracy_S = tools.calculate_accuracy(test_predictions_s)
+            
+            # Predict the labels of the test data for T
+            test_predictions_t = tools.predict_test_data(T, best_hypotheses, alphas, line_or_circle)
+            # Calculate the accuracy of the predictions for T
+            accuracy_T = tools.calculate_accuracy(test_predictions_t)
+
             empirical_error_s = 1 - accuracy_S
+            true_error_t = 1 - accuracy_T
+
+            empirical_errors_set.append(empirical_error_s)
+            true_error_set.append(true_error_t)
             
             if print_details:
-                print(f'Iteration {i}: ')
-                print(f"        - empirical_error (on set S): {empirical_error_s * 100:.2f}%")
-                # print(f"        - True error on T: {accuracy_T * 100:.2f}%")
+                print(f'Iteration {i}: - Empirical_error (on set S): {empirical_error_s * 100:.2f}%')
+                print(f"             - True error      (on set T): {true_error_t * 100:.2f}%")
 
-
-        if len(alphas) != len(best_hypotheses):
-            # Error !!
-            if print_details:
-                print("Eror: length of alphas is not equals to the length of best_hypotheses")
-        else:
-            if print_details:
-                for i in range(0,len(alphas)):
-                    print(f"{i}. Hypothese {i+1}: {best_hypotheses[i]},\n   -- -- -- Alpha: {alphas[i]}")
+        if show_best_hypotheses:
+            if len(alphas) != len(best_hypotheses):
+                # Error !!
+                if print_details:
+                    print("Eror: length of alphas is not equals to the length of best_hypotheses")
+            else:
+                if print_details:
+                    for i in range(0,len(alphas)):
+                        print(f"{i}. Hypothese {i+1}: {best_hypotheses[i]},\n   -- -- -- Alpha: {alphas[i]}")
 
         # Predict the labels of the test data for S
         test_predictions_s = tools.predict_test_data(S, best_hypotheses, alphas, line_or_circle)
@@ -108,7 +121,7 @@ class AdaBoost:
         if to_visualize:
             self.visualize(points, best_hypotheses, line_or_circle)
         
-        return empirical_error_s, true_error_t
+        return empirical_error_s, true_error_t, empirical_errors_set, true_error_set
         pass
 
     def visualize(self, S, best_hypotheses, line_or_circle):
