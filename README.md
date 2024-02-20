@@ -20,8 +20,18 @@ The AdaBoost algorithm in our implementation can use two types of rules:
 ## Output
 The output of the program is 3 parts: 
 1 .sum of the operation that activated (number of runs, iterations and hypotheses).
+
+![image](https://github.com/SappirBo/AdaBoost_ML_course/assets/92790326/9fa62843-ce52-497a-b823-868a4f22a5af)
+
 2. Average errors upon all the runs.
+
+![image](https://github.com/SappirBo/AdaBoost_ML_course/assets/92790326/7f6a0a1d-b0a7-4aac-9c23-8a80e7dde285)
+
 3. summary.
+![image](https://github.com/SappirBo/AdaBoost_ML_course/assets/92790326/ff84d2e5-57ea-4c2f-ba32-8e71f50e6240)
+
+
+Example:
 
 ![image](https://github.com/SappirBo/AdaBoost_ML_course/assets/92790326/95ac44de-9e85-4a11-aee3-2ceb24424ee1)
 
