@@ -6,6 +6,7 @@ Implement of the AdaBoost algorithm as part of machine learning course. AdaBoost
 
 ## Dataset
 In our AdaBoost implementation, we are developing a machine learning model to classify data points based on their features. in ```circle_separator.txt``` file, we have data points where each point have coordinates (x, y) and a label (-1 or 1).
+<br/><br/>
 ![image](https://github.com/SappirBo/AdaBoost_ML_course/assets/92790326/2cd86ddd-6ed6-4302-810a-c289a5803f94)
 
 
